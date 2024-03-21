@@ -1,0 +1,108 @@
+react 
+1.js basics 
+->es6
+->ternary
+->use of short cicuiting ?? (falsy values 0,'',null,undefined)
+->optional chaining ?.
+->var,let,const
+->this how isue with this is solved using the arrow functions
+const data= 
+{
+	name:"test name",
+	hobbies:["playing","learning"],
+	showhobbies(){
+		this.hobbies.foreach(function(hobby){
+			console.log("person :"+this.name+ " likes to "+hobby+" during leisure")
+		});
+	}
+}
+
+without arrow 
+1.need to use private let _this = this before using this.hobbies and print the name with private _this
+2.bind this 
+arrow function solves this issue out of box
+
+->array methods 
+ filter,map,reduce these methods can be used in chain
+2.react installation:
+
+1.With create react app outdated ,still good for learning slow refreshing/rendering building and not used for prod grade appl
+2.with Wite builder used in prod grade webapps fast refresing building and packaging due to latest webpacks used but setting up additional libraries like eslint 
+and other additional libraries are difficult
+3.React recommends remix or next js for installation but that is too much for react as front end app
+
+3.React:
+it is declarative ,component based and stateful
+vanilla js requires registering the event listeners and traversing dom so it is difficult for a very big projects
+react , angular , vue js takes care of this dom updation 
+
+4.React basic concepts:
+1.const [name, setname] = usestate() use state hook is important hook to maintain the state of the component and it should always be present at the top and should not used inside blocks
+2.useEffect hook to load the data initally includes sideeffects, if sideffects not handled properly then it will cause them to run multiple times
+3.functional componenet -> function FunctionName() should return single root jsx wrapped  (<><div><p></p></div><div><p></p></div/></>) or (<div> <p></p></div>)
+4.jsx element can be native html tag 
+4.props data passed from parent to child react support single way data binding
+5.styles ->
+ inline : style={{}} (hyphens should not be used style name should be camelcased) 
+ with class : className="" or className={importedName.className} import from external css file
+   1.css class can be maintained in each components specific folder which may reduce css defects as maintaining the common css has impact on different componeents
+     but this also has some disadvantage like it is difficult to apply common or root level styles
+   2.for componenets with lesser css can be incorporated in the component directly
+6.conditional rendering  {} && (<></>) or use ternary ? to switch the components based on condition or we can use if/else ->to load components  this can be used in accordance /conjunction with short circuiting logic
+7.strict mode in react works only in dev environment to find the dfects in components this makes the component to load twice
+8.componenets ->
+->components in react is basic building block
+->we can nest this components inside another component based on our ui demand
+->Component mainly encourages resusability
+	1.Functional (modern way ) : Functional components should  start with Caps letter and must return jsx or <> or null
+	2.class (legacy) will have life cycle methods like componenetDidMount(),getDerivedStateFromProps(),componenetWillUnmount(),constructor() componentDidUpdate etc
+->Component needs to exported using export default function name();
+9.hooks:
+->Hooks provide the capability for the functional components to manage thier states ,dependency life cycle etc
+->Hooks Must always be used at the top level
+->It should not be used inside nested functions or blocks
+useState():
+->it is used to manage the state of the componenets , whenever the state gets updated component is rerendered
+->it sets data with setter method which updated the state of the component 
+->whenever the state to be updated based on  the current state for eg :counter we have to use callback fuction to update the state
+->Stateupdate is asynchronously doen in batch by react
+const [count, setCount] = useState();
+const [name,setName] useState();
+setCount(count+1);setCount(count+1); //directly updating the state two times is not updated twice 
+but te same is updated twice with callback
+setCount((s)=>s+1);// for state to be updated based on the current state
+setCount((s)=>s+1);// for state to be updated based on the current state
+
+const [name, setname] = usestate());
+setCount((s)=>s+1);// for state to be updated based on the current state
+function NameInput(){
+return (
+<div>
+ <input className="" value={name} onChange={(e)=>setName(e.target.value)}// 
+/>
+</div> 
+);
+export default NameInput;
+}
+
+useRef():
+->this hook is majorly used to select the dom
+->another use case can be to store the previous state as the useRef() value is not changed during muliple rerenders
+const inputRef = useRef();
+function NameInput(){
+ function handleClick(){
+	inputRef.current.focus();//set 
+ }
+return (
+<div>
+ <input ref={inputRef} className="" value={name} / 
+/>
+<button onClick={handleClick()}>
+</div> 
+);
+export default NameInput;
+}
+
+useImperativeHandle();
+
+https://blog.webdevsimplified.com/2022-06/use-imperative-handle/
