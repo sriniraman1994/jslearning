@@ -41,7 +41,8 @@ react , angular , vue js takes care of this dom updation
 2.useEffect hook to load the data initally includes sideeffects, if sideffects not handled properly then it will cause them to run multiple times
 3.functional componenet -> function FunctionName() should return single root jsx wrapped  (<><div><p></p></div><div><p></p></div/></>) or (<div> <p></p></div>)
 4.jsx element can be native html tag 
-4.props data passed from parent to child react support single way data binding
+4.props data passed from parent to child react support single way data binding 
+ for child to parent communication parent can expose callbackfunction as props and the child can call the call back function to update the states ,there is one more concept in this which is lifting up the state
 5.styles ->
  inline : style={{}} (hyphens should not be used style name should be camelcased) 
  with class : className="" or className={importedName.className} import from external css file
@@ -106,3 +107,13 @@ export default NameInput;
 useImperativeHandle();
 
 https://blog.webdevsimplified.com/2022-06/use-imperative-handle/
+
+######################################################
+jsx rules:
+1.statements(if,else,switch,for,while) are not allowed in the jsx
+2.{} can be used to insert javascript in the jsx
+3.property names are camel case
+4.we can store jsx inside another variable and use
+5.html atrributes and css class name should be in camel case ,except aria-* and data-*
+#####################################################
+List needs to be rendered with key attribute so that uniquely identify the componenet and rerender based on state changes
